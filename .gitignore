@@ -10,6 +10,7 @@
 /docs/_build/
 /.tox/
 /venv
+/env
 /node_modules/
 npm-debug.log*
 *.idea/

@@ -1,3 +1,92 @@
-body{
-    background: #ccc;
+a {
+    color: #333333;
+    text-decoration: none;
+    background-color: transparent;
+    transition: .5s all ease;
 }
+a:hover{
+    color: #e6da33;
+    text-decoration: none;
+}
+.navbar .container {
+    padding: 15px 0;
+}
+
+.navbar .nav-link{
+    font-size: 19px;
+}
+
+.navbar .site-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 0px;
+    z-index: 10;
+}
+
+.active>.nav-link{
+    color: #e6da33 !important
+}
+
+.nav-link:hover{
+    color: #e6da33 !important;
+}
+
+.icon{
+    color: #898989;
+    margin-right: 15px;
+}
+
+div .social-bar{
+    padding: 10px 0;
+}
+
+/* Element colours */
+.bg-light-dark{
+    background-color: #222222 !important;
+}
+.bg-dark{
+    background-color: #131313 !important;
+}
+.text-warning{
+    color: #e6da33 !important;  
+}
+
+/* carousel edits */
+.carousel-inner .carousel-caption h5{
+    font-size: 30px;
+    color: #e6da33;
+    display: inline;
+
+}
+.carousel-inner .carousel-caption p{
+    font-size: 20px;
+    color: #fffddc;
+}
+.carousel-item:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.recent-news{
+    padding: 6em 0;
+    position: relative;
+}
+
+.subheading {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.heading-section h2 {
+    font-size: 40px;
+    font-weight: 900;
+}   
