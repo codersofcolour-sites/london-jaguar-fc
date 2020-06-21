@@ -52,6 +52,13 @@ div .social-bar{
     color: #e6da33 !important;  
 }
 
+.btn-main{
+    background-color: #ffb700
+}
+.btn-main:hover{
+    background-color: #ffd15b
+}
+
 /* carousel edits */
 .carousel-inner .carousel-caption h5{
     font-size: 30px;
@@ -90,3 +97,24 @@ div .social-bar{
     font-size: 40px;
     font-weight: 900;
 }   
+
+nav a:hover{
+    color: #333333;
+}
+
+.pagination a:hover {
+    background: #cacaca;
+    color: #222222;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    background: #cacaca;
+    color: #222222;
+    border-color: #DFD7CA;
+}
+
+.post-date{
+    position: absolute;
+    color: rgb(250, 0, 0);
+}

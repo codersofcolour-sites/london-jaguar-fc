@@ -1,4 +1,4 @@
-{% load static wagtailuserbar wagtailfontawesome%}
+{% load static wagtailuserbar wagtailcore_tags wagtailfontawesome wagtailsettings_tags wagtailimages_tags%}
 {% fontawesome_css %}
 
 <!DOCTYPE html>
@@ -29,34 +29,56 @@
         {% wagtailuserbar %}
         <div class="bg-light-dark">
             <ul class="social-bar navbar-nav ml-auto d-flex align-items-center flex-row justify-content-center">
-                <li class="nav-item active">
-                    <a class="icon" href="#">
-                        <i class="fa fa-facebook-square fa-2x"></i>
-                    </a>
-                </li>
+                {% if settings.site_settings.SiteSettings.facebook %}
+                    <li class="nav-item">
+                        <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.facebook}}">
+                            <i class="fa fa-facebook-square fa-2x"></i>
+                        </a>
+                    </li>
+                {% endif %}
+                {% if settings.site_settings.SiteSettings.twitter %}
                 <li class="nav-item">
-                    <a class="icon" href="#">
+                    <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.twitter}}">
                         <i class="fa fa-twitter-square fa-2x"></i>
                     </a>
                 </li>
+                {% endif %}
+                {% if settings.site_settings.SiteSettings.linkedin %}
                 <li class="nav-item">
-                    <a class="icon" href="#">
+                    <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.linkedin}}">
                         <i class="fa fa-linkedin-square fa-2x"></i>
                     </a>
-                </li>
+                </li> 
+                {% endif %}
+                {% if settings.site_settings.SiteSettings.instagram %}
                 <li class="nav-item">
-                    <a class="icon" href="#">
+                    <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.instagram}}">
                         <i class="fa fa-instagram fa-2x"></i>
                     </a>
                 </li>
+                {% endif %}
+                {% if settings.site_settings.SiteSettings.youtube %}
+                <li class="nav-item">
+                    <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.youtube}}">
+                        <i class="fa fa-youtube-play fa-2x"></i>
+                    </a>
+                </li>
+                {% endif %}
+                {% if settings.site_settings.SiteSettings.pinterest %}
+                <li class="nav-item">
+                    <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.pinterest}}">
+                        <i class="fa fa-pinterest-square fa-2x"></i>
+                    </a>
+                </li>
+                {% endif %}
             </ul>
         </div>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container nav-container position-relative">
-                <a class="navbar-brand mr-3" href="#">
+                <a class="navbar-brand mr-3" href="{% slugurl 'home' %}">
                     <div class="site-logo">
-                        <img src="{% static 'images/logo.png' %}" alt="london-jaguar-fc logo" width="120px">
+                        {% image settings.site_settings.SiteSettings.website_logo fill-120x120  %}
                     </div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
@@ -67,13 +89,13 @@
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav ml-auto d-flex align-items-center">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{% slugurl 'home' %}">Home</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blogs</a>
+                            <a class="nav-link" href="{% slugurl 'blogs' %}">Blogs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Team</a>
@@ -92,7 +114,7 @@
 
         
         {% block content %}{% endblock %}
-        
+
         <footer class="bg-dark">
 
             <!-- Copyright -->
