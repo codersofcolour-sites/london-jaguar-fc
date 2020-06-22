@@ -27,11 +27,17 @@
                 <div class="col mb-4">
                   <div class="card">
                     {% image post.specific.image fill-900x600 as img %}
-                    <img src="{{img.url}}" class="card-img-top" alt="...">
+                    <img src="{{img.url}}" class="card-img-top" alt="{{img.alt}}">
                     <div class="card-body">
-                      <h5 class="card-title b">{{ post.title }}</h5>
+                      <a href="{% pageurl post %}">
+                        <h5 class="card-title b">{{ post.title }}</h5>
+                      </a>            
                       <p class="card-subtitle my-3 text-muted">{{ post.specific.date }}</p>
-                      <p class="card-title">{{post.specific.body|richtext|striptags|truncatechars:120}} </p>
+                          {% if post.specific.first_paragraph %}
+                            <p class="card-title">
+                              {{post.specific.first_paragraph|richtext|striptags|truncatechars:120}}
+                            </p>
+                          {% endif %}
                       <a href="{% pageurl post %}" class="btn btn-main btn-block">Read more</a>
                     </div>
                   </div>

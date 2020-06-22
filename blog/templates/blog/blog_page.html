@@ -16,40 +16,45 @@
             <h5 class="f6 ttu tracked black-80">By Adam Morse</h5>
           </div>
         </header> -->
-        {% image page.image fill-950x450 as img %}
-        <div class="pa4 ph7-l mw9-l center mt-4">
+        {% image page.image fill-1050x450 as img %}
+        <div class="pa4 container mw9-l center mt-4">
             <img src="{{img.url}}" alt="" class="center">
-            <h2 class="f2-ns f4 mt0 b black-90 mt-4">A Night of Taking Photos at the Spooky Ruins of the Sutro Baths</h2>
+            <h2 class="f2-ns f4 mt0 b black-90 mt-4">{{page.heading}}</h2>
             <p class="black-50 f4 mb-4">{{ page.date }}</p>
-            {% for child in self.body %}
-            {% if child.block_type == 'heading' %}
-                <h2>{{ child }}</h2>
-            {% else %}
-                {{ child }}
-            {% endif %}
-            {% endfor %}
-            {% for b in page.body %}
-                {% if b.block_type == 'paragraph'  %}
-                <section> {% include_block b.value %}</section>
-               
-                    
-                {% endif %}
-            {% endfor %}
-            <p class="f5 f3-ns lh-copy">
-                    
-              Theodore Sturgeon was a science fiction author, critic, and the basis for Kurt Vonnegut's recurring character Kilgore Trout. He was prolific, authoring over 200 pieces himself and critiquing around 400 others.
-            </p>
-            <p class="f5 f3-ns lh-copy georgia">
-              In 1958 he published a piece in Venture proclaiming what he called "Sturgeon's Revelation"
-            </p>
-          <p class="f6 f5-ns lh-copy i pl4 bl bw1 b--gold mb4">
-            I repeat Sturgeon's Revelation, which was wrung out of me after twenty years of wearying defense of science fiction against attacks of people who used the worst examples of the field for ammunition, and whose conclusion was that ninety percent of SF is crud. Using the same standards that categorize 90% of science fiction as trash, crud, or crap, it can be argued that 90% of film, literature, consumer goods, etc. is crap. In other words, the claim (or fact) that 90% of science fiction is crap is ultimately uninformative, because science fiction conforms to the same trends of quality as all other artforms.
-          </p>
-    
-      
-          <p class="f5 f4-ns lh-copy">
-          This is most likely, the wrong conversation for us as a community, to be having. The presence of bad tools - shouldn't discourage us from wanting more tools or frameworks. There are more books published in a single day than I will ever be able to read in my lifetime. But this does not make me sad. Or overwhelm me. Mostly I think about how excited I am to read the best books that are being published. And this is where we should push the conversation. How do we build better tools? What does that look like?
-        </p>
+
+            {% with blocks=self.body %}
+                {% for block in blocks %}
+                    {% if block.block_type == 'paragraph' %}
+                        {{ block.value }}
+                    {% elif block.block_type == 'image' %}
+                    <div class="row my-4">
+                        <div class="mx-auto text-center">
+                            {% image block.value width-600 class="img-fluid" %}
+                        </div>
+                    </div>
+                    {% elif block.block_type == 'quote' %}
+                        <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--gold">
+                            <div class="pa2">
+                            <p class="f5 f4-m f3-l lh-copy measure mt0">
+                                {{ block.value.quote_text }}
+                            </p>
+                                <cite class="f6 ttu tracked fs-normal">―
+                                    {{ block.value.source }}
+                                </cite>
+                            </div>
+                        </blockquote>
+                    {% else %}
+                    <section class="block-{{ block.block_type }}">
+                        {{ block }}
+                    </section>
+                    {% endif %}
+                {% endfor %}
+                {% endwith %}
+             
+
+
+
+
         </div>
     </article>
     <div class="tc mt3 mb-5">
