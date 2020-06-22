@@ -40,6 +40,7 @@ class BlogPage(Page):
         blank=True,
         on_delete=models.SET_NULL
     )
+    
     # Replace wrapped rich-text div
     RichText.__html__ = lambda self: '<div class="f5 f4-ns lh-copy">' + \
         expand_db_html(self.source) + '</div>'
