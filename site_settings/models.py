@@ -21,6 +21,7 @@ class SiteSettings(BaseSetting):
   )
   
   panels = [
+    ImageChooserPanel('website_logo'),
     MultiFieldPanel([
       FieldPanel('facebook'),
       FieldPanel('twitter'),
@@ -29,5 +30,4 @@ class SiteSettings(BaseSetting):
       FieldPanel('youtube'),
       FieldPanel('pinterest'),
     ], heading="Social Media Settings"),
-    ImageChooserPanel('website_logo')
   ]
