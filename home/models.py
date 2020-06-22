@@ -44,7 +44,8 @@ class HomePage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-
-        recent_blogs = self.get_children().exact_type(BlogIndexPage).first().get_children().live().order_by('-first_published_at')
-        context['recent_blogs'] = recent_blogs[:3]
-        return context
+        try:
+            recent_blogs = self.get_children().exact_type(BlogIndexPage).first().get_children().live().order_by('-first_published_at')
+            context['recent_blogs'] = recent_blogs[:3]
+        except:
+            return context

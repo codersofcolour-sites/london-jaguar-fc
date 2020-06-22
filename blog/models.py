@@ -24,8 +24,6 @@ class BlogIndexPage(Page):
     ]
 
     def get_context(self, request):
-        # Update context to include only published posts,
-        # in reverse chronological order
         context = super(BlogIndexPage, self).get_context(request)
         live_blogpages = self.get_children().live()
         context['blogpages'] = live_blogpages.live().order_by('-first_published_at')
