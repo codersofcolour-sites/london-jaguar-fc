@@ -1,5 +1,6 @@
 {% load static wagtailuserbar wagtailcore_tags wagtailfontawesome wagtailsettings_tags wagtailimages_tags%}
 {% fontawesome_css %}
+{% load menu_tags %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -76,7 +77,7 @@
 
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container nav-container position-relative">
-                <a class="navbar-brand mr-3" href="{% slugurl 'home' %}">
+                <a class="navbar-brand mr-3" href="/">
                     <div class="site-logo">
                         {% image settings.site_settings.SiteSettings.website_logo width-100  %}
                     </div>
@@ -86,26 +87,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
     
-                <div class="collapse navbar-collapse" id="navbarColor01">
+                <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto d-flex align-items-center">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% slugurl 'home' %}">Home</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% slugurl 'blogs' %}">Blogs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Team</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Donate</a>
-                        </li>
+                        {% main_menu template="menu.html" apply_active_classes=True %}
                     </ul>
                 </div>            
             </div>
