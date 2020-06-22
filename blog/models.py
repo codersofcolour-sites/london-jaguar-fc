@@ -45,7 +45,7 @@ class BlogPage(Page):
     RichText.__html__ = lambda self: '<div class="f5 f4-ns lh-copy">' + \
         expand_db_html(self.source) + '</div>'
 
-    heading = models.CharField(max_length=250, help_text='Heading of the article')
+    heading = models.CharField(max_length=250, help_text='Heading of the article', null=True)
     blog_body = StreamField([
         ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
         ('image', ImageChooserBlock(icon="image")),
