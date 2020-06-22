@@ -56,7 +56,7 @@ class BlogPage(Page):
                 classname="full", help_text='Add quote.')),
         ], icon='openquote'), ),
         ('embedded_video', EmbedBlock(icon="media")),
-    ])
+    ],null=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
