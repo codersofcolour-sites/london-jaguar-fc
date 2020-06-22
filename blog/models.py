@@ -46,7 +46,7 @@ class BlogPage(Page):
         expand_db_html(self.source) + '</div>'
 
     heading = models.CharField(max_length=250, help_text='Heading of the article')
-    body = StreamField([
+    blog_body = StreamField([
         ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
         ('image', ImageChooserBlock(icon="image")),
         ('quote', blocks.StructBlock([
@@ -56,13 +56,13 @@ class BlogPage(Page):
                 classname="full", help_text='Add quote.')),
         ], icon='openquote'), ),
         ('embedded_video', EmbedBlock(icon="media")),
-    ],null=True)
+    ], null=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         ImageChooserPanel('image'),
         FieldPanel('heading'),
-        StreamFieldPanel('body')
+        StreamFieldPanel('blog_body')
     ]
 
     def first_paragraph(self):
