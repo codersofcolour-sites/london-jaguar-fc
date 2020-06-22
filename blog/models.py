@@ -35,18 +35,11 @@ class BlogPage(Page):
         on_delete=models.SET_NULL
     )
     intro = models.CharField(max_length=250)
-    body = StreamField([
-    ('heading', blocks.CharBlock(classname="full title", icon="title")),
-    ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
-    ('embed', EmbedBlock(icon="media")),
-])
     
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         ImageChooserPanel('image'),
         FieldPanel('intro'),
-        StreamFieldPanel('body')
     ]
 
-BlogPage._meta.get_field("date").default = timezone.now
-BlogPage._meta.get_field("body").default = timezone.now
+
