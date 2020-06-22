@@ -28,7 +28,7 @@ class BlogIndexPage(Page):
         # in reverse chronological order
         context = super(BlogIndexPage, self).get_context(request)
         live_blogpages = self.get_children().live()
-        context['blogpages'] = live_blogpages.order_by('-first_published_at')
+        context['blogpages'] = live_blogpages.live().order_by('-first_published_at')
         return context
 
 
