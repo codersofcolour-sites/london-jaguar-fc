@@ -10,21 +10,27 @@ from wagtail.core.fields import StreamField
 from wagtail.core import blocks
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
+
+from wagtail.core.rich_text import expand_db_html, RichText
+
 
 class BlogIndexPage(Page):
+    subpage_types = ['BlogPage']
     intro = models.CharField(blank=True, max_length=150)
-    
+
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname="full")
     ]
+
     def get_context(self, request):
-        # Update context to include only published posts, 
+        # Update context to include only published posts,
         # in reverse chronological order
         context = super(BlogIndexPage, self).get_context(request)
         live_blogpages = self.get_children().live()
-        context['blogpages'] = live_blogpages.order_by('-first_published_at')
+        context['blogpages'] = live_blogpages.live().order_by('-first_published_at')
         return context
-    
+
 
 class BlogPage(Page):
     date = models.DateField("Post date")
@@ -34,6 +40,7 @@ class BlogPage(Page):
         blank=True,
         on_delete=models.SET_NULL
     )
+
     intro = models.CharField(max_length=250)
     
     content_panels = Page.content_panels + [
@@ -41,5 +48,4 @@ class BlogPage(Page):
         ImageChooserPanel('image'),
         FieldPanel('intro'),
     ]
-
 

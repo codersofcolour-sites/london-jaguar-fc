@@ -10,8 +10,8 @@ from wagtail.admin.edit_handlers import (
 )
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
-from wagtail.images.edit_handlers import ImageChooserPanel    
-
+from wagtail.images.edit_handlers import ImageChooserPanel
+from blog.models import BlogIndexPage
 
 class HomePageCarousel(Orderable):
     page = ParentalKey("home.HomePage", related_name="carousel_images")
@@ -30,12 +30,21 @@ class HomePageCarousel(Orderable):
         FieldPanel("carousel_text"),
     ]
 
+
 class HomePage(Page):
     body = RichTextField(blank=True)
     content_panels = Page.content_panels + [
         MultiFieldPanel(
-            [InlinePanel("carousel_images", max_num=5, min_num=1, label="Image"),],
+            [InlinePanel("carousel_images", max_num=5,
+                         min_num=1, label="Image"), ],
             heading="Carousel Images",
         ),
         FieldPanel('body', classname="full"),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+
+        recent_blogs = self.get_children().exact_type(BlogIndexPage).first().get_children().live().order_by('-first_published_at')
+        context['recent_blogs'] = recent_blogs[:3]
+        return context
