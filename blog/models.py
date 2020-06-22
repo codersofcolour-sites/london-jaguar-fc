@@ -41,34 +41,11 @@ class BlogPage(Page):
         on_delete=models.SET_NULL
     )
 
-    # Replace wrapped rich-text div
-    RichText.__html__ = lambda self: '<div class="f5 f4-ns lh-copy">' + \
-        expand_db_html(self.source) + '</div>'
-
-    heading = models.CharField(max_length=250, help_text='Heading of the article', null=True)
-    blog_body = StreamField([
-        ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
-        ('image', ImageChooserBlock(icon="image")),
-        ('quote', blocks.StructBlock([
-            ('source', blocks.CharBlock(classname="full",
-                                        help_text='The source of where that quote came from.')),
-            ('quote_text', blocks.CharBlock(
-                classname="full", help_text='Add quote.')),
-        ], icon='openquote'), ),
-        ('embedded_video', EmbedBlock(icon="media")),
-    ], null=True)
-
+    intro = models.CharField(max_length=250)
+    
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         ImageChooserPanel('image'),
-        FieldPanel('heading'),
-        StreamFieldPanel('blog_body')
+        FieldPanel('intro'),
     ]
 
-    def first_paragraph(self):
-        for block in self.body:
-            if block.block_type == 'paragraph':
-                return block.value
-
-
-BlogPage._meta.get_field("date").default = timezone.now
