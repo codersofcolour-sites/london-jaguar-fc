@@ -14,9 +14,9 @@
 
     <div class="carousel-inner">
         {% for loop_cycle in page.carousel_images.all %}
-        {% image loop_cycle.carousel_image fill-950x400 as img  %}
+        {% image loop_cycle.carousel_image fill-950x400 as carousel_img  %}
         <div class="carousel-item{% if forloop.counter == 1 %} active{% endif %}">
-            <img src="{{img.url}}" class="d-block w-100" alt="{{ img.alt }}">
+            <img src="{{carousel_img.url}}" class="d-block w-100" alt="{{ carousel_img.alt }}">
             <div class="carousel-caption d-none d-md-block text-left">
                 <h5>{{ loop_cycle.carousel_header }}</h5>
                 <p>{{ loop_cycle.carousel_text }}</p>
