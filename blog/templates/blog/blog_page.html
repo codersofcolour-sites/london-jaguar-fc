@@ -10,7 +10,7 @@
             <h2 class="f2-ns f4 mt0 b black-90 mt-4">{{page.heading}}</h2>
             <p class="black-50 f4 mb-4">{{ page.date }}</p>
 
-            {% with blocks=self.body %}
+            {% with blocks=self.blog_content %}
                 {% for block in blocks %}
                     {% if block.block_type == 'paragraph' %}
                         {{ block.value }}
