@@ -24,6 +24,7 @@ class HomePageCarousel(Orderable):
     )
     carousel_header = models.CharField(max_length=50, blank=True, null=True)
     carousel_text = models.CharField(max_length=300, blank=True, null=True)
+    
     panels = [
         ImageChooserPanel("carousel_image"),
         FieldPanel("carousel_header"),

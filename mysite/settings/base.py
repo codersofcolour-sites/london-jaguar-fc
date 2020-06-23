@@ -178,6 +178,8 @@ WAGTAIL_SITE_NAME = "mysite"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
+env = os.environ.copy()
+
 if "AWS_STORAGE_BUCKET_NAME" in env:
     INSTALLED_APPS.append("storages")
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
