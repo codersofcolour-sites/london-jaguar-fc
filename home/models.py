@@ -48,5 +48,6 @@ class HomePage(Page):
         try:
             recent_blogs = self.get_children().exact_type(BlogIndexPage).first().get_children().live().order_by('-first_published_at')
             context['recent_blogs'] = recent_blogs[:3]
+            return context
         except:
             return context

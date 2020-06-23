@@ -62,7 +62,7 @@ class BlogPage(Page):
     ]
 
     def first_paragraph(self):
-        for block in self.body:
+        for block in self.blog_content:
             if block.block_type == 'paragraph':
                 return block.value
 
