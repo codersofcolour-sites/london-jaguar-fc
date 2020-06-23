@@ -4,6 +4,7 @@
 
 
 {% block content %}
+
 <div id="carousel-fc" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         {% for loop_cycle in page.carousel_images.all  %}
@@ -34,6 +35,7 @@
     </a>
 </div>
 
+
 <section class="recent-news">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
@@ -49,7 +51,7 @@
               <div class="col mb-4">
                 <div class="card">
                   {% image blog.blog_image fill-900x600 as img %}
-                  <img src="{{img.url}}" class="card-img-top" alt="{img.alt}">
+                  <img src="{{img.url}}" class="card-img-top" alt="{{img.alt}}">
                   <div class="card-body">
                     <a href="{% pageurl blog %}">
                       <h5 class="card-title">{{blog.title}}</h5>

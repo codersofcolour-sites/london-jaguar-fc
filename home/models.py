@@ -30,7 +30,7 @@ class HomePageCarousel(Orderable):
         FieldPanel("carousel_header"),
         FieldPanel("carousel_text"),
     ]
-
+    
 
 class HomePage(Page):
     body = RichTextField(blank=True)
