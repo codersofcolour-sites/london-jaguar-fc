@@ -32,12 +32,16 @@ class BlogIndexPage(Page):
 
 class BlogPage(Page):
     date = models.DateField("Post date")
-    image = models.ForeignKey(
+    blog_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL
     )
+
+    # Replace wrapped rich-text div
+    RichText.__html__ = lambda self: '<div class="f5 f4-ns lh-copy">' + \
+        expand_db_html(self.source) + '</div>'
 
     blog_content = StreamField([
         ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
@@ -50,14 +54,16 @@ class BlogPage(Page):
         ], icon='openquote'), ),
         ('embedded_video', EmbedBlock(icon="media")),
     ], null=True)
-
-    intro = models.CharField(max_length=250)
     
     content_panels = Page.content_panels + [
         FieldPanel('date'),
-        ImageChooserPanel('image'),
-        FieldPanel('intro'),
+        ImageChooserPanel('blog_image'),
         StreamFieldPanel('blog_content'),
     ]
+
+    def first_paragraph(self):
+        for block in self.body:
+            if block.block_type == 'paragraph':
+                return block.value
 
 BlogPage._meta.get_field("date").default = timezone.now
