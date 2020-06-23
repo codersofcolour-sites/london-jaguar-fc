@@ -19,8 +19,18 @@
           {% image loop_cycle.carousel_image fill-950x400 as carousel_img %}
             <img src="{{carousel_img.url}}" class="d-block w-100" alt="{{ carousel_img.alt }}">
             <div class="carousel-caption d-none d-md-block text-left">
-                <h5>{{ loop_cycle.carousel_header }}</h5>
-                <p>{{ loop_cycle.carousel_text }}</p>
+              {% if loop_cycle.carousel_header or loop_cycle.carousel_text %}
+                <div class="bg-black-80 pa3 ">
+                  {% if loop_cycle.carousel_header %}
+                    <h5>{{ loop_cycle.carousel_header }}</h5>
+                  {% endif %}
+                  {% if loop_cycle.carousel_text %}
+                    <p>{{ loop_cycle.carousel_text }}</p>
+                  {% endif %}
+                </div>                
+              {% endif %}
+
+
             </div>
         </div>
         {% endfor %}

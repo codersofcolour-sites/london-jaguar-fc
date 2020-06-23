@@ -30,6 +30,9 @@ INSTALLED_APPS = [
     'search',
     'blog',
     'about',
+    'team',
+    'contact',
+    'donate',
     'dashboard',
     'site_settings',
 
