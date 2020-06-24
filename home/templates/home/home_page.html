@@ -4,17 +4,17 @@
 
 
 {% block content %}
-
 <div id="carousel-fc" class="carousel slide" data-ride="carousel">
+  {% if page.get_carousel_images|length > 1 %}
     <ol class="carousel-indicators">
-        {% for loop_cycle in page.carousel_images.all  %}
+        {% for loop_cycle in page.get_carousel_images  %}
         <li data-target="#carousel-fc" data-slide-to="{{forloop.counter0}}" {% if forloop.counter == 1 %} class="active"
             {% endif %}></li>
         {% endfor %}
     </ol>
-
+  {% endif %}
     <div class="carousel-inner">
-        {% for loop_cycle in page.carousel_images.all %}
+        {% for loop_cycle in page.get_carousel_images %}
         <div class="carousel-item{% if forloop.counter == 1 %} active{% endif %}">
           {% image loop_cycle.carousel_image fill-950x400 as carousel_img %}
             <img src="{{carousel_img.url}}" class="d-block w-100" alt="{{ carousel_img.alt }}">
@@ -29,20 +29,20 @@
                   {% endif %}
                 </div>                
               {% endif %}
-
-
             </div>
         </div>
         {% endfor %}
     </div>
-    <a class="carousel-control-prev" href="#carousel-fc" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel-fc" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    {% if page.get_carousel_images|length > 1 %}
+      <a class="carousel-control-prev" href="#carousel-fc" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-fc" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+    {% endif %}
 </div>
 
 

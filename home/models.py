@@ -41,6 +41,13 @@ class HomePage(Page):
         )
     ]
 
+    def get_carousel_images(self):
+        carousel_lst = []
+        for image in self.carousel_images.all():
+            if image.carousel_image  != None:
+                carousel_lst.append(image)
+        return carousel_lst
+
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         try:
