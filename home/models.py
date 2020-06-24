@@ -33,14 +33,12 @@ class HomePageCarousel(Orderable):
     
 
 class HomePage(Page):
-    body = RichTextField(blank=True)
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [InlinePanel("carousel_images", max_num=5,
                          min_num=1, label="Image"), ],
             heading="Carousel Images",
-        ),
-        FieldPanel('body', classname="full"),
+        )
     ]
 
     def get_context(self, request, *args, **kwargs):
