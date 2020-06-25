@@ -28,53 +28,6 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-        <div class="bg-light-dark">
-            <ul class="social-bar navbar-nav ml-auto d-flex align-items-center flex-row justify-content-center">
-                {% if settings.site_settings.SiteSettings.facebook %}
-                    <li class="nav-item">
-                        <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.facebook}}">
-                            <i class="fa fa-facebook-square fa-2x"></i>
-                        </a>
-                    </li>
-                {% endif %}
-                {% if settings.site_settings.SiteSettings.twitter %}
-                <li class="nav-item">
-                    <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.twitter}}">
-                        <i class="fa fa-twitter-square fa-2x"></i>
-                    </a>
-                </li>
-                {% endif %}
-                {% if settings.site_settings.SiteSettings.linkedin %}
-                <li class="nav-item">
-                    <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.linkedin}}">
-                        <i class="fa fa-linkedin-square fa-2x"></i>
-                    </a>
-                </li> 
-                {% endif %}
-                {% if settings.site_settings.SiteSettings.instagram %}
-                <li class="nav-item">
-                    <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.instagram}}">
-                        <i class="fa fa-instagram fa-2x"></i>
-                    </a>
-                </li>
-                {% endif %}
-                {% if settings.site_settings.SiteSettings.youtube %}
-                <li class="nav-item">
-                    <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.youtube}}">
-                        <i class="fa fa-youtube-play fa-2x"></i>
-                    </a>
-                </li>
-                {% endif %}
-                {% if settings.site_settings.SiteSettings.pinterest %}
-                <li class="nav-item">
-                    <a class="icon" target="_blank" href="{{settings.site_settings.SiteSettings.pinterest}}">
-                        <i class="fa fa-pinterest-square fa-2x"></i>
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
             <div class="container nav-container position-relative">
                 <a class="navbar-brand mr-3" href="/">

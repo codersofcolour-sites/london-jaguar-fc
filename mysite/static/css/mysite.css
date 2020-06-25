@@ -43,9 +43,6 @@ a:hover{
     margin-right: 15px;
 }
 
-div .social-bar{
-    padding: 10px 0;
-}
 
 /* Element colours */
 .bg-light-dark{
@@ -75,15 +72,6 @@ div .social-bar{
 .carousel-inner .carousel-caption p{
     font-size: 20px;
     color: #fffddc;
-}
-.carousel-item:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-    right: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.4);
 }
 
 .recent-updates,
@@ -135,4 +123,8 @@ nav a:hover{
 
 .content-box{
     height: 600px;
+}
+.social{
+    height: 70px;
+    width: 70px;
 }
