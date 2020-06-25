@@ -86,11 +86,19 @@ div .social-bar{
     background: rgba(0, 0, 0, 0.4);
 }
 
-.recent-updates{
+.recent-updates,
+.about-us {
     padding: 4em 0;
     position: relative;
 }
-
+.counter-box{
+    background-color: red;
+    height: 100px;
+}
+.counter-box2{
+    background-color: yellow;
+    height: 100px;
+}
 .subheading {
     font-size: 16px;
     display: block;
@@ -123,4 +131,8 @@ nav a:hover{
 .post-date{
     position: absolute;
     color: rgb(250, 0, 0);
+}
+
+.content-box{
+    height: 600px;
 }
