@@ -83,6 +83,8 @@
         {% endif %}
     </div>
 </section>
+
+
 <section class="stat-box py-5 bg-gold">
   <div class="container">
     <div class="row justify-content-center black">
@@ -92,42 +94,49 @@
       </div>
     </div>
     <div class="row d-flex justify-content-center mt-4">
-      {% if settings.site_settings.SiteSettings.facebook %}
+      {% if settings.site_settings.SocialMediaSettings.facebook %}
       <a class="link white" href="/">
         <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
           <i class="fa fa-facebook fa-3x"></i>
         </div>
       </a>
       {% endif %}
-      {% if settings.site_settings.SiteSettings.twitter %}
+      {% if settings.site_settings.SocialMediaSettings.twitter %}
       <a class="link white" href="/">
         <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
           <i class="fa fa-twitter fa-3x"></i>
         </div>
       </a>
       {% endif %}
-      {% if settings.site_settings.SiteSettings.linkedin %}
+      {% if settings.site_settings.SocialMediaSettings.linkedin %}
       <a class="link white" href="/">
         <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
           <i class="fa fa-linkedin fa-3x"></i>
         </div>
       </a>
       {% endif %}
-      {% if settings.site_settings.SiteSettings.instagram %}
+      {% if settings.site_settings.SocialMediaSettings.instagram %}
+      <a class="link white" href="/">
+        <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
+          <i class="fa fa-instagram fa-3x"></i>
+        </div>
+      </a>
+      {% endif %}
+      {% if settings.site_settings.SocialMediaSettings.youtube %}
       <a class="link white" href="/">
         <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
           <i class="fa fa-youtube-play fa-3x"></i>
         </div>
       </a>
       {% endif %}
-      {% if settings.site_settings.SiteSettings.pinterest %}
+      {% if settings.site_settings.SocialMediaSettings.pinterest %}
       <a class="link white" href="/">
         <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
           <i class="fa fa-pinterest fa-3x"></i>
         </div>
       </a>
       {% endif %}
-      {% if settings.site_settings.SiteSettings.google %}
+      {% if settings.site_settings.SocialMediaSettings.google %}
       <a class="link white" href="/">
         <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
           <i class="fa fa-google fa-3x"></i>
