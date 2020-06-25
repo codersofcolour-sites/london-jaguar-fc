@@ -49,37 +49,30 @@
 <section class="recent-updates">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
-            <div class="col-md-7 heading-section text-center">
-                <span class="subheading">Blog</span>
+            <div class="heading-section text-center">
+                <span class="subheading">News</span>
                 <h2>Recent Updates</h2>
             </div>
         </div>
-        {% if recent_blogs %}          
+        {% if recent_news %}          
           <div class="row row-cols-1 row row-cols-lg-3 row-cols-md-2 mb-3">
-            {% for blog in recent_blogs.specific %}
+            {% for news in recent_news.specific %}
               <div class="col mb-4">
                 <div class="card h-100 bw5">
-                  {% image blog.blog_image fill-900x600 as img %}
+                  {% image news.news_image fill-900x600 as img %}
                   <img src="{{img.url}}" class="card-img-top" alt="{{img.alt}}">
                   <div class="card-body">
-                    <a href="{% pageurl blog %}">
-                      <h5 class="card-title b">{{blog.title}}</h5>
+                    <a href="{% pageurl news %}">
+                      <h5 class="card-title b">{{news.title}}</h5>
                     </a>
-                    <p class="card-subtitle mb-2 text-muted">{{blog.date}}</p>
-                    <p class="card-text">{{blog.first_paragraph|richtext|striptags|truncatechars:120}}</p>
-                    <a href="{% pageurl blog %}" class="btn btn-main btn-block">Read more</a>
+                    <p class="card-subtitle mb-2 text-muted">{{news.date}}</p>
+                    <p class="card-text">{{news.first_paragraph|richtext|striptags|truncatechars:120}}</p>
+                    <a href="{% pageurl news %}" class="btn btn-main btn-block">Read more</a>
                   </div>
                 </div>
               </div>
             {% endfor %}
           </div>
-          <div class="row text-center">
-            <div class="col">
-              
-              <a href="{% slugurl 'blogs' %}" class="btn btn-main btn-lg p-3">View more Blogs</a>
-            </div>
-          </div>
-
         {% endif %}
     </div>
 </section>

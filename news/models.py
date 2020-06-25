@@ -15,8 +15,8 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.core.rich_text import expand_db_html, RichText
 
 
-class BlogIndexPage(Page):
-    subpage_types = ['BlogPage']
+class NewsIndexPage(Page):
+    subpage_types = ['NewsPage']
     intro = models.CharField(blank=True, max_length=150)
 
     content_panels = Page.content_panels + [
@@ -24,15 +24,15 @@ class BlogIndexPage(Page):
     ]
 
     def get_context(self, request):
-        context = super(BlogIndexPage, self).get_context(request)
-        live_blogpages = self.get_children().live()
-        context['blogpages'] = live_blogpages.live().order_by('-first_published_at')
+        context = super(NewsIndexPage, self).get_context(request)
+        live_newspages = self.get_children().live()
+        context['newspages'] = live_newspages.live().order_by('-first_published_at')
         return context
 
 
-class BlogPage(Page):
+class NewsPage(Page):
     date = models.DateField("Post date")
-    blog_image = models.ForeignKey(
+    news_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
@@ -40,11 +40,10 @@ class BlogPage(Page):
     )
 
     # Replace wrapped rich-text div
-    RichText.__html__ = lambda self: '<div class="f5 f4-ns lh-copy">' + \
-        expand_db_html(self.source) + '</div>'
+    RichText.__html__ = lambda self: expand_db_html(self.source)
 
-    blog_content = StreamField([
-        ('paragraph', blocks.RichTextBlock(icon="pilcrow")),
+    news_content = StreamField([
+        ('paragraph', blocks.RichTextBlock(icon="pilcrow", features=['p','link', 'bold', 'italic'])),
         ('image', ImageChooserBlock(icon="image")),
         ('quote', blocks.StructBlock([
             ('source', blocks.CharBlock(classname="full",
@@ -57,13 +56,13 @@ class BlogPage(Page):
     
     content_panels = Page.content_panels + [
         FieldPanel('date'),
-        ImageChooserPanel('blog_image'),
-        StreamFieldPanel('blog_content'),
+        ImageChooserPanel('news_image'),
+        StreamFieldPanel('news_content'),
     ]
 
     def first_paragraph(self):
-        for block in self.blog_content:
+        for block in self.news_content:
             if block.block_type == 'paragraph':
                 return block.value
 
-BlogPage._meta.get_field("date").default = timezone.now
+NewsPage._meta.get_field("date").default = timezone.now

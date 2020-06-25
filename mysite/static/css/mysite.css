@@ -4,14 +4,16 @@ a {
     background-color: transparent;
     transition: .5s all ease;
 }
-
+p a {
+    color: #d49a07;
+}
 img{
     width: 100%;
     max-width: 100%;
 }
 
 a:hover{
-    color: #e6da33;
+    color: #d49a07;
     text-decoration: none;
 }
 .navbar .container {

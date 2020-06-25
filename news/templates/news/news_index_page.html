@@ -22,10 +22,10 @@
             </div>
         </div>
         <div class="row row-cols-1 row-cols-xl-4 row-cols-lg-3 row-cols-md-2">  
-            {% for post in blogpages %}
+            {% for post in newspages %}
                 <div class="col mb-4">
-                  <div class="card">
-                    {% image post.specific.blog_image fill-900x600 as img %}
+                  <div class="card h-100 bw5">
+                    {% image post.specific.news_image fill-900x600 as img %}
                     <img src="{{img.url}}" class="card-img-top" alt="{{img.alt}}">
                     <div class="card-body">
                       <a href="{% pageurl post %}">

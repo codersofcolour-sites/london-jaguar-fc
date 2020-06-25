@@ -11,7 +11,7 @@ from wagtail.admin.edit_handlers import (
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
-from blog.models import BlogIndexPage
+from news.models import NewsIndexPage
 
 class HomePageCarousel(Orderable):
     page = ParentalKey("home.HomePage", related_name="carousel_images")
@@ -42,17 +42,17 @@ class HomePage(Page):
     ]
 
     def get_carousel_images(self):
-        carousel_lst = []
+        carousel_list = []
         for image in self.carousel_images.all():
             if image.carousel_image  != None:
-                carousel_lst.append(image)
-        return carousel_lst
+                carousel_list.append(image)
+        return carousel_list
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         try:
-            recent_blogs = self.get_children().exact_type(BlogIndexPage).first().get_children().live().order_by('-first_published_at')
-            context['recent_blogs'] = recent_blogs[:3]
+            recent_news = self.get_children().exact_type(NewsIndexPage).first().get_children().live().order_by('-first_published_at')
+            context['recent_news'] = recent_news[:3]
             return context
         except:
             return context
