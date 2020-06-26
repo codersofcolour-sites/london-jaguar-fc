@@ -29,10 +29,11 @@ INSTALLED_APPS = [
     'home',
     'search',
     'about',
-    'team',
+    'gallery',
     'news',
     'contact',
-    'donate',
+    'testimonials',
+    'services',
     'dashboard',
     'site_settings',
 

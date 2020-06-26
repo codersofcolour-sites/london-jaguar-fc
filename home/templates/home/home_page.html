@@ -20,9 +20,9 @@
             <img src="{{carousel_img.url}}" class="d-block w-100" alt="{{ carousel_img.alt }}">
             <div class="carousel-caption d-none d-md-block">
               {% if loop_cycle.carousel_header or loop_cycle.carousel_text %}
-                <div class="bg-black-90 pa3 ">
+                <div class="bg-black-90 pa3">
                   {% if loop_cycle.carousel_header %}
-                    <h5>{{ loop_cycle.carousel_header }}</h5>
+                    <h5 class="gold">{{ loop_cycle.carousel_header }}</h5>
                   {% endif %}
                   {% if loop_cycle.carousel_text %}
                     <p>{{ loop_cycle.carousel_text }}</p>
@@ -45,6 +45,23 @@
     {% endif %}
 </div>
 
+<section class="info-section-with-image py-5 bg-black gold">
+  <div class="container">
+      <div class="row">
+          <div class="col tc">
+              <h2 class="b f2-l ttu mt-4">Meet the London Jaguars FC</h2>
+              <p class="f4 white">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id leo in vitae turpis massa. Mauris a diam maecenas sed. Enim ut tellus elementum sagittis
+              </p>
+          </div>
+      </div>
+      <div class="row my-4 ">
+        <div class="mx-auto text-center ">
+            {{ block.value }}
+        </div>
+      </div>
+  </div>
+</section>
 
 <section class="recent-updates">
     <div class="container">
@@ -75,68 +92,5 @@
           </div>
         {% endif %}
     </div>
-</section>
-
-
-<section class="stat-box py-5 bg-gold">
-  <div class="container">
-    <div class="row justify-content-center black">
-      <div class="heading-section text-center">
-        <h2 class="ttu">Connect with Us</h2>
-        <span class="subheading">Follow us and get in touch</span>
-      </div>
-    </div>
-    <div class="row d-flex justify-content-center mt-4">
-      {% if settings.site_settings.SocialMediaSettings.facebook %}
-      <a class="link white" href="/">
-        <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
-          <i class="fa fa-facebook fa-3x"></i>
-        </div>
-      </a>
-      {% endif %}
-      {% if settings.site_settings.SocialMediaSettings.twitter %}
-      <a class="link white" href="/">
-        <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
-          <i class="fa fa-twitter fa-3x"></i>
-        </div>
-      </a>
-      {% endif %}
-      {% if settings.site_settings.SocialMediaSettings.linkedin %}
-      <a class="link white" href="/">
-        <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
-          <i class="fa fa-linkedin fa-3x"></i>
-        </div>
-      </a>
-      {% endif %}
-      {% if settings.site_settings.SocialMediaSettings.instagram %}
-      <a class="link white" href="/">
-        <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
-          <i class="fa fa-instagram fa-3x"></i>
-        </div>
-      </a>
-      {% endif %}
-      {% if settings.site_settings.SocialMediaSettings.youtube %}
-      <a class="link white" href="/">
-        <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
-          <i class="fa fa-youtube-play fa-3x"></i>
-        </div>
-      </a>
-      {% endif %}
-      {% if settings.site_settings.SocialMediaSettings.pinterest %}
-      <a class="link white" href="/">
-        <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
-          <i class="fa fa-pinterest fa-3x"></i>
-        </div>
-      </a>
-      {% endif %}
-      {% if settings.site_settings.SocialMediaSettings.google %}
-      <a class="link white" href="/">
-        <div class="social m-3 br-100 br-100 d-flex bg-black justify-content-center align-items-center">
-          <i class="fa fa-google fa-3x"></i>
-        </div>
-      </a>
-      {% endif %}
-    </div>
-  </div>
 </section>
 {% endblock %}

@@ -13,7 +13,7 @@
             </div>
             <h2 class="f1-ns f4 mt0 b black-90 mt-4">{{page.title}}</h2>
             <p class="black-50 f4 mb-4">{{ page.date }}</p>
-            {% with blocks=self.news_content %}
+            {% with blocks=page.news_content %}
                 {% for block in blocks %}
                     {% if block.block_type == 'paragraph' %}
                     <div class="f5 f4-ns lh-copy">

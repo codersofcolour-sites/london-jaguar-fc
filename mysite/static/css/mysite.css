@@ -67,7 +67,6 @@ a:hover{
 /* carousel edits */
 .carousel-inner .carousel-caption h5{
     font-size: 30px;
-    color: #e6da33;
     display: inline;
 
 }
@@ -129,4 +128,8 @@ nav a:hover{
 .social{
     height: 70px;
     width: 70px;
+}
+
+.box-h{
+    height: 500px;
 }

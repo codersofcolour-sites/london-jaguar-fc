@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags %}
+    
+{% block content %}
+    <header class="bg-gold">
+        <div class="mw9 center tc pv4 ph6-l">
+        <h3 class="f2 f1-m f-headline-l lh-title">
+            <span class=" lh-copy black pa1 b">
+                {{ page.title }}
+            </span>
+        </h3>
+        <nav class="f6 fw6 ttu tracked black b">
+            <a class="black" href="{{ page.get_parent.url }}" title="Home">Home</a> -
+            <span class="black">{{ page.title }}</span>
+          </nav>
+        </div>
+    </header>
+    
+    <div class="pa5">
+      {% if page.intro %}
+      <div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center">
+              <h3>{{ page.intro }}</h3>
+          </div>
+      </div>
+      {% endif %}
+      <div class="d-flex flex-wrap">
+        {% for gallery_img in page.gallery_images.all %}
+        <div class="galleryimg p-2">
+          {% image gallery_img.image fill-250x250 as img %}
+          {% image gallery_img.image original as img_original %}
+          <a class="example-image-link" href="{{img_original.url}}" data-lightbox="london-jaguars-set" data-title="{{gallery_img.image_caption}}">
+            <img src="{{img.url}}" alt="{{img.alt}"/>
+          </a>
+
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+
+{% endblock %}

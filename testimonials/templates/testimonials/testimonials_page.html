@@ -15,4 +15,22 @@
           </nav>
         </div>
     </header>
+    
+    <div class="pa5">
+      {% if page.intro %}
+      <div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center">
+              <h3>{{ page.intro }}</h3>
+          </div>
+      </div>
+      {% endif %}
+      <div class="d-flex flex-wrap justify-content-center ">
+        {% for video in page.testimonials_video %}
+        <div class="galleryvid col-5 p-2">
+          {{video}}
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+
 {% endblock %}
