@@ -16,30 +16,36 @@
     </div>
 </header>
 
-<section class="stat-box py-5 ">
+<section class="stat-box pt-3">
     <div class="container">
-        <div class="row d-flex flex-wrap">
-          <div class="col-md-4 tc d-flex flex-column align-items-center">
+        <div class="row d-flex flex-wrap justify-content-center">
+          {% if page.address %}
+          <div class="col-md-4 my-5 tc d-flex flex-column align-items-center">
               <div class="contact-i mb-3 p-3 br-100 d-flex bg-black justify-content-center align-items-center">
                 <i class="fa fa-map-marker fa-4x gold"></i>
               </div>
               <p class="b black f3 mb-0">Address:</p>
-              <p class="f4-m f5-l black measure">London, GB west side broker town, GB west side broker town</p>
+              <p class="f4-m f5-l black measure">{{page.address}}</p>
           </div>
-            <div class="col-md-4 tc d-flex flex-column align-items-center">
+          {% endif %}
+          {% if page.contact_number %}
+          <div class="col-md-4 my-5 tc d-flex flex-column align-items-center">
+            <div class="contact-i mb-3 p-3 br-100 d-flex bg-black justify-content-center align-items-center">
+              <i class="fa fa-phone fa-4x gold"></i>
+            </div>
+              <p class="b black f3 mb-0">Contact Number:</p>
+              <p class="f4-m f5-l  black measure">{{page.contact_number}}</p>
+          </div>
+          {% endif %}
+          {% if page.contact_email %}
+          <div class="col-md-4 my-5 tc d-flex flex-column align-items-center">
               <div class="contact-i mb-3 p-3 br-100 d-flex bg-black justify-content-center align-items-center">
-                <i class="fa fa-phone fa-4x gold"></i>
+                <i class="fa fa-envelope fa-4x gold"></i>
               </div>
-                <p class="b black f3 mb-0">Contact Number:</p>
-                <p class="f4-m f5-l  black measure">+81 596 069 9999</p>
-            </div>
-            <div class="col-md-4 tc d-flex flex-column align-items-center">
-                <div class="contact-i mb-3 p-3 br-100 d-flex bg-black justify-content-center align-items-center">
-                  <i class="fa fa-envelope fa-4x gold"></i>
-                </div>
-                <p class="b black f3 mb-0">Email Address:</p>
-                <p class="f4-m f5-l black measure">londonfc@gmail.com</p>
-            </div>
+              <p class="b black f3 mb-0">Email Address:</p>
+              <p class="f4-m f5-l black measure">{{page.contact_email}}</p>
+          </div>
+          {% endif %}
         </div>
     </div>
 </section>

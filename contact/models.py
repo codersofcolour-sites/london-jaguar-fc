@@ -24,9 +24,9 @@ class ContactPage(AbstractEmailForm):
     intro = RichTextField(blank=True, features=['bold', 'italic'])
     thank_you_text = RichTextField(blank=True,features=['bold', 'italic', 'link'])
 
-    address = RichTextField(blank=True, features=['bold', 'italic'])
-    contact_number = models.CharField(max_length=90, null=True)
-    contact_email = models.CharField(max_length=150, null=True)
+    address = models.CharField(max_length=550,blank=True)
+    contact_number = models.CharField(max_length=90, blank=True)
+    contact_email = models.CharField(max_length=150, blank=True)
 
     content_panels = AbstractEmailForm.content_panels + [
         MultiFieldPanel([
