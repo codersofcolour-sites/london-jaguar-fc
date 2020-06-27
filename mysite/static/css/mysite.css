@@ -62,6 +62,10 @@ a:hover{
 .btn-main{
     background-color: #ffb700
 }
+.btn-l{
+    font-size: 30px;
+    color: black;
+}
 .btn-main:hover{
     background-color: #ffd15b
 }

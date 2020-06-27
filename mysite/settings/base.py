@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'services',
     'dashboard',
     'site_settings',
+    'widget_tweaks',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
