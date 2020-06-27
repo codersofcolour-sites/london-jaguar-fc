@@ -24,12 +24,12 @@
           </div>
       </div>
       {% endif %}
-      <div class="d-flex flex-wrap">
+      <div class="row row-cols-1 row-cols-lg-3 row-cols-xl-4 row-cols-md-2">
         {% for gallery_img in page.gallery_images.all %}
-        <div class="galleryimg p-2">
-          {% image gallery_img.image fill-250x250 as img %}
+        <div class="galleryimg p-2 col">
+          {% image gallery_img.image fill-600x400 as img %}
           {% image gallery_img.image original as img_original %}
-          <a class="example-image-link" href="{{img_original.url}}" data-lightbox="london-jaguars-set" data-title="{{gallery_img.image_caption}}">
+          <a class="example-image-link" href="{{img_original.url}}"  data-lightbox="london-jaguars-set" {% if gallery_img.image_caption %} data-title="{{gallery_img.image_caption}}"{% endif %}>
             <img src="{{img.url}}" alt="{{img.alt}"/>
           </a>
 
