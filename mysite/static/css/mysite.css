@@ -11,7 +11,9 @@ img{
     width: 100%;
     max-width: 100%;
 }
-
+.link:focus {
+    outline: 0;
+}
 a:hover{
     color: #d49a07;
     text-decoration: none;
@@ -128,6 +130,10 @@ nav a:hover{
 .social{
     height: 70px;
     width: 70px;
+}
+.contact-i{
+    height: 120px;
+    width: 120px;
 }
 
 .box-h{
