@@ -24,11 +24,11 @@
           </div>
       </div>
       {% endif %}
-      <div class="d-flex flex-wrap justify-content-center ">
+      <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2">
         {% for video in page.testimonials_video %}
-        <div class="galleryvid col-5 p-2">
-          {{video}}
-        </div>
+          <div class= "col responsive-object">
+            {{video}}
+          </div>
         {% endfor %}
       </div>
   </div>
