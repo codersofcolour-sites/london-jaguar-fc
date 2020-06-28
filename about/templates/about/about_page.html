@@ -19,72 +19,23 @@
 <section class="info-section-with-image py-5 bg-black">
     <div class="container">
         <div class="row">
-            <div class="col tc">
-                <h2 class="b f3-m f2-l ttu mt-4 gold">{{page.heading}}</h2>
-                <p class="f4 white">{{page.intro_text}}</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="about-u">
-    <div class="container-fluid">
-        <div class="row">
-            {% image page.about_image fill-300x300 as img %}
-            <div class="col-lg-6 cover p-0">
-                <img src="{{img.url}}" alt="">
-            </div>
-            <div class="col-lg-6 f5 black p-3 d-flex flex-column justify-content-center align-items-center">
+            <div class="col mt-4 mx-5">
                 {% with blocks=page.about_content %}
-                {% for block in blocks %}
-                    {{ block.value }}
-                {% endfor %}
+                    {% for block in blocks %}
+                        {% if block.block_type == 'subheading' %}
+                             <h2 class="b f3-m f2-l ttu gold my-3 bb">{{block.value}}</h2>
+                        {% elif block.block_type == 'paragraph' %}
+                            <div class="f4-l f5-m white">
+                                {{block.value}}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 {% endwith %}
+                
+                
                 
             </div>
         </div>
     </div>
 </section>
-
-<!-- <section class="about-us bg-gold">
-    <div class="container-fluid">
-        <div class="row d-flex">
-            <div class="col-md-6 order-lg-2">
-                <img class="py-2" src="https://cdn.mos.cms.futurecdn.net/yL3oYd7H2FHDDXRXwjmbMf.jpg" alt="">
-            </div>
-            <div class="col-md-6 tc p-4  order-lg-1">
-                <h2 class="b f4-m f3-l ttu mt-4 black">Meet the London Jaguars FC</h2>
-                <p class="f5 mt-3 black">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id leo in vitae turpis massa. Mauris a diam maecenas sed. Enim ut tellus elementum sagittis
-                </p>
-                <p class="f5 mt-3 black">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id leo in vitae turpis massa. Mauris a diam maecenas sed. Enim ut tellus elementum sagittis
-                </p>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-<!-- <section class="stat-box py-5 ">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-6 tc my-4">
-                <h2 class="b f1-m f2-l black">100</h2>
-                <h2 class="b f3-m f3-l ttu gold">Game Played</h2>
-            </div>
-            <div class="col-md-3 col-6 tc my-4">
-                <h2 class="b f1-m f2-l black">100</h2>
-                <h2 class="b f3-m f3-l ttu gold">Coaches</h2>
-            </div>
-            <div class="col-md-3 col-6 tc my-4">
-                <h2 class="b f1-m f2-l black">100</h2>
-                <h2 class="b f3-m f3-l ttu gold">Trophies</h2>
-            </div>
-            <div class="col-md-3 col-6 tc my-4">
-                <h2 class="b f1-m f2-l black">100</h2>
-                <h2 class="b f3-m f3-l ttu gold">Members</h2>
-            </div>
-        </div>
-    </div>
-</section> -->
 {% endblock %}
