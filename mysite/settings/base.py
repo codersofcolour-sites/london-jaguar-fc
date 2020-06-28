@@ -183,8 +183,6 @@ WAGTAIL_SITE_NAME = "mysite"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
-env = os.environ.copy()
-
 if "AWS_STORAGE_BUCKET_NAME" in env:
     INSTALLED_APPS.append("storages")
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
@@ -196,3 +194,8 @@ if "AWS_STORAGE_BUCKET_NAME" in env:
         AWS_S3_CUSTOM_DOMAIN = env["AWS_S3_CUSTOM_DOMAIN"]
 
     AWS_S3_URL_PROTOCOL = env.get("AWS_S3_URL_PROTOCOL", "https:")
+
+EMAIL_HOST = env.get('MAILGUN_SMTP_SERVER', '')
+EMAIL_PORT = env.get('MAILGUN_SMTP_PORT', '')
+EMAIL_HOST_USER = env.get('MAILGUN_SMTP_LOGIN', '')
+EMAIL_HOST_PASSWORD = env.get('MAILGUN_SMTP_PASSWORD', '')

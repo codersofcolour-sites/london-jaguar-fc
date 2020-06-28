@@ -1,5 +1,5 @@
 from django.db import models
-
+from wagtail.wagtailadmin.utils import send_mail
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import (
     FieldPanel,
