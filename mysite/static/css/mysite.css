@@ -18,6 +18,27 @@ a:hover{
     color: #d49a07;
     text-decoration: none;
 }
+.bg-img{
+    background-image: url('../images/black_camo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+.bg-img:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background:rgba(0,0,0,1);
+    opacity: .6; 
+}
+.home-vid{
+    z-index: 8;
+}
 .navbar .container {
     padding: 15px 0;
 }
@@ -142,6 +163,12 @@ nav a:hover{
 
 .box-h{
     height: 500px;
+}
+
+
+.home-responsive-object iframe {
+    max-width:  100% !important;
+    max-height: 100% !important;
 }
 
 .responsive-object {

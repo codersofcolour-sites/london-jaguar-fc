@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailcore_tags wagtailimages_tags%}
+{% load static wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
 
 
 
@@ -45,20 +45,25 @@
     {% endif %}
 </div>
 
-<section class="info-section-with-image py-5 bg-black gold">
+<section class="bg-img py-5 gold ba bw2">
   <div class="container">
       <div class="row">
-          <div class="col tc">
-              <h2 class="b f2-l ttu mt-4">Meet the London Jaguars FC</h2>
-              <p class="f4 white">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id leo in vitae turpis massa. Mauris a diam maecenas sed. Enim ut tellus elementum sagittis
-              </p>
+        <div class="col-md-3 p-2 d-flex justify-content-center align-items-center">
+          <img src="{% static 'images/logo.png' %}" style="width: 220px;" alt="">
+        </div>
+        <div class="col-md-9 tc">
+          <h2 class="b f2-l mt-4">London Jaguars Community Association</h2>
+          <p class="f3 white athelas i">Be fearless in the pursuit of glory</p>
+          <div class="ba p-1 f3-l f5-m tc white">
+             Sports &amp; Community Organisation | Sunday League Football Team | Strength &amp; Conditioning | Fitness &amp; Nutrition
           </div>
+        </div>
       </div>
       <div class="row my-4 ">
-        <div class="mx-auto text-center ">
-            {{ block.value }}
+        <div class="mx-auto text-center home-vid home-responsive-object">
+          {% embed 'https://www.youtube.com/watch?v=NpEaa2P7qZI' %}
         </div>
+      </div>
       </div>
   </div>
 </section>
