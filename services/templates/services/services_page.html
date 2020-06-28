@@ -19,51 +19,19 @@
 <section class="info-section-with-image py-5 bg-black">
     <div class="container">
         <div class="row">
-            <div class="col tc">
-                <h2 class="b f3-m f2-l ttu mt-4 gold">{{page.heading}}</h2>
-                <p class="f4 white">{{page.intro_text}}</p>
-            </div>
+            {% for service in page.services_list.all %}
+                <div class="col-md-6  ">
+                    <div class="my-3 ba bw2 b--gold p-4">
+                        <h2 class="b f4-m f3-l ttu my-4 gold">{{service.subheading}}</h2>
+                        <div class="f5-l f6-m white">{{service.paragraph|richtext}}</div> 
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- <section class="about-u">
-    <div class="container-fluid">
-        <div class="row">
-            {% image page.about_image fill-300x300 as img %}
-            <div class="col-lg-6 cover p-0">
-                <img src="{{img.url}}" alt="">
-            </div>
-            <div class="col-lg-6 f5 black p-3 d-flex flex-column justify-content-center align-items-center">
-                {% with blocks=page.about_content %}
-                {% for block in blocks %}
-                    {{ block.value }}
-                {% endfor %}
-                {% endwith %}
-                
-            </div>
-        </div>
-    </div>
-</section> -->
 
-<!-- <section class="about-us bg-gold">
-    <div class="container-fluid">
-        <div class="row d-flex">
-            <div class="col-md-6 order-lg-2">
-                <img class="py-2" src="https://cdn.mos.cms.futurecdn.net/yL3oYd7H2FHDDXRXwjmbMf.jpg" alt="">
-            </div>
-            <div class="col-md-6 tc p-4  order-lg-1">
-                <h2 class="b f4-m f3-l ttu mt-4 black">Meet the London Jaguars FC</h2>
-                <p class="f5 mt-3 black">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id leo in vitae turpis massa. Mauris a diam maecenas sed. Enim ut tellus elementum sagittis
-                </p>
-                <p class="f5 mt-3 black">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id leo in vitae turpis massa. Mauris a diam maecenas sed. Enim ut tellus elementum sagittis
-                </p>
-            </div>
-        </div>
-    </div>
-</section> -->
 
 <!-- <section class="stat-box py-5 ">
     <div class="container">

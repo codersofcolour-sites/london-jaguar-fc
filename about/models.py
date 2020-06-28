@@ -13,7 +13,7 @@ class AboutPage(Page):
         ('paragraph', blocks.RichTextBlock(icon="pilcrow", features=['p','link', 'bold', 'italic'])),
     ], null=True)
 
-# Replace wrapped rich-text div
+    # Replace wrapped rich-text div
     RichText.__html__ = lambda self: expand_db_html(self.source)
 
     content_panels = Page.content_panels + [

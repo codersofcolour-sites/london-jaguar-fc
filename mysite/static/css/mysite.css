@@ -161,6 +161,11 @@ nav a:hover{
     position:absolute;
 }
 
+.responsive-object:after{
+font-size: 60px;    
+content: 'Video Loading..';
+}
+
 
 /* Large screens ----------- */
 @media only screen
