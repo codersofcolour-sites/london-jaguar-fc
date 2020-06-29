@@ -81,8 +81,12 @@ class HomePage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         try:
-            recent_news = self.get_children().exact_type(NewsIndexPage).first().get_children().live().order_by('-first_published_at')
-            context['recent_news'] = recent_news[:3]
+            newspage = self.get_children().exact_type(NewsIndexPage)
+            recent_news = newspage.first().get_children().live().order_by('-first_published_at')
+            if newspage.live():
+                context['recent_news'] = recent_news[:3]
+            else:
+                context['recent_news'] = None
             return context
         except:
             return context
