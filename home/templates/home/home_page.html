@@ -20,12 +20,12 @@
             <img src="{{carousel_img.url}}" class="d-block w-100" alt="{{ carousel_img.alt }}">
             <div class="carousel-caption d-none d-md-block">
               {% if loop_cycle.carousel_header or loop_cycle.carousel_text %}
-                <div class="bg-black-90 pa3">
+                <div class="bg-black-90 py-2 ">
                   {% if loop_cycle.carousel_header %}
                     <h5 class="gold">{{ loop_cycle.carousel_header }}</h5>
                   {% endif %}
                   {% if loop_cycle.carousel_text %}
-                    <p>{{ loop_cycle.carousel_text }}</p>
+                    <p class="mb-0">{{ loop_cycle.carousel_text }}</p>
                   {% endif %}
                 </div>                
               {% endif %}
@@ -49,26 +49,28 @@
   <div class="container">
       <div class="row">
         <div class="col-md-3 p-2 d-flex justify-content-center align-items-center">
-          <img src="{% static 'images/logo.png' %}" style="width: 220px;" alt="">
+          {% image page.logo original as logo %}
+          <img src="{{logo.url}}" style="width: 200px;" alt="{{logo.alt}}">
         </div>
         <div class="col-md-9 tc">
-          <h2 class="b f2-l mt-4">London Jaguars Community Association</h2>
-          <p class="f3 white athelas i">Be fearless in the pursuit of glory</p>
+          <h2 class="b f2-l mt-4">{{page.header}}</h2>
+          <p class="f3 white athelas i">{{page.subheader}}</p>
           <div class="ba p-1 f3-l f5-m tc white">
-             Sports &amp; Community Organisation | Sunday League Football Team | Strength &amp; Conditioning | Fitness &amp; Nutrition
+            {{page.content}}
           </div>
         </div>
       </div>
       <div class="row my-4 ">
         <div class="mx-auto text-center home-vid home-responsive-object">
-          {% embed 'https://www.youtube.com/watch?v=NpEaa2P7qZI' %}
+          {% embed page.video_url max_width=900 %}
         </div>
       </div>
       </div>
   </div>
 </section>
 
-<section class="recent-updates">
+{% if recent_news %} 
+<section class="recent-updates black">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="heading-section text-center">
@@ -76,7 +78,7 @@
                 <h2>Recent Updates</h2>
             </div>
         </div>
-        {% if recent_news %}          
+                 
           <div class="row row-cols-1 row row-cols-lg-3 row-cols-md-2 mb-3">
             {% for news in recent_news.specific %}
               <div class="col mb-4">
@@ -95,7 +97,8 @@
               </div>
             {% endfor %}
           </div>
-        {% endif %}
+        
     </div>
 </section>
+{% endif %}
 {% endblock %}

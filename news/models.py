@@ -11,6 +11,7 @@ from wagtail.core import blocks
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 from wagtail.core.rich_text import expand_db_html, RichText
 
@@ -23,10 +24,19 @@ class NewsIndexPage(Page):
         FieldPanel('intro', classname="full")
     ]
 
-    def get_context(self, request):
-        context = super(NewsIndexPage, self).get_context(request)
+    def get_context(self, request, *args, **kwargs):
+        context = super(NewsIndexPage, self).get_context(request, *args, **kwargs)
         live_newspages = self.get_children().live()
-        context['newspages'] = live_newspages.live().order_by('-first_published_at')
+        all_posts = live_newspages.live().order_by('-first_published_at')
+        paginator = Paginator(all_posts, 12)
+        page = request.GET.get("page")
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+        context["newspages"] = posts
         return context
 
 

@@ -11,7 +11,7 @@ from wagtail.admin.edit_handlers import (
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
-from news.models import NewsIndexPage
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 class Galleries(Orderable):
     page = ParentalKey("gallery.GalleryPage", related_name="gallery_images")
@@ -39,3 +39,19 @@ class GalleryPage(Page):
             heading="Gallery Images",
         )
     ]
+    
+    def get_context(self, request, *args, **kwargs):
+        context = super(GalleryPage, self).get_context(request, *args, **kwargs)
+        live_newspages = self.gallery_images.all()
+        all_pics = live_newspages
+        paginator = Paginator(all_pics, 40)
+        page = request.GET.get("page")
+        
+        try:
+            pics = paginator.page(page)
+        except PageNotAnInteger:
+            pics = paginator.page(1)
+        except EmptyPage:
+            pics = paginator.page(paginator.num_pages)
+        context["gallerypics"] = pics
+        return context
