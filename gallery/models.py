@@ -31,6 +31,8 @@ class Galleries(Orderable):
     
 
 class GalleryPage(Page):
+    subpage_types = []
+    max_count = 1 
     intro = models.CharField(max_length=300, blank=True, null=True)
     content_panels = Page.content_panels + [
         FieldPanel("intro"),

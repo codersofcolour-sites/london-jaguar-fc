@@ -8,6 +8,8 @@ from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core.rich_text import expand_db_html, RichText
 
 class AboutPage(Page):   
+    subpage_types = []
+    max_count = 1 
     about_content = StreamField([
         ('subheading', blocks.RichTextBlock(icon="title", features=['h2'])),
         ('paragraph', blocks.RichTextBlock(icon="pilcrow", features=['p','link', 'bold', 'italic'])),

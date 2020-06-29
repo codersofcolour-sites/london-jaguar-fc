@@ -35,6 +35,16 @@ class HomePageCarousel(Orderable):
     
 
 class HomePage(Page):
+    subpage_types = [
+        'news.NewsIndexPage',
+        'about.AboutPage',
+        'services.ServicesPage',
+        'gallery.GalleryPage',
+        'testimonials.TestimonialsPage',
+        'contact.ContactPage'
+    ]
+    max_count = 1 
+
     video_url = models.URLField(blank=False, null=True)
     logo = models.ForeignKey(
         "wagtailimages.Image",

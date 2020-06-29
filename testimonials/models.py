@@ -11,10 +11,12 @@ from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core.fields import StreamField
 
 class TestimonialsPage(Page):
-    intro = models.CharField(max_length=150)
+    subpage_types = []
+    max_count = 1 
+    intro = models.CharField(max_length=150, blank=True)
     testimonials_video = StreamField([
         ('embedded_video', EmbedBlock(icon="media")),
-    ], null=True)
+    ], null=True, blank=True)
 
     content_panels = Page.content_panels + [
         FieldPanel("intro"),

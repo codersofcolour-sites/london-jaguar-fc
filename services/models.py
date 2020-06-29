@@ -19,6 +19,8 @@ class Services(Orderable):
     
 
 class ServicesPage(Page):
+    subpage_types = []   
+    max_count = 1 
     # Replace wrapped rich-text div
     RichText.__html__ = lambda self: expand_db_html(self.source)
     

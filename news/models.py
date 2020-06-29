@@ -18,6 +18,10 @@ from wagtail.core.rich_text import expand_db_html, RichText
 
 class NewsIndexPage(Page):
     subpage_types = ['NewsPage']
+    parent_page_type =[
+        'home.HomePage'
+    ]  
+    max_count = 1 
     intro = models.CharField(blank=True, max_length=150)
 
     content_panels = Page.content_panels + [
@@ -41,6 +45,10 @@ class NewsIndexPage(Page):
 
 
 class NewsPage(Page):
+    parent_page_type =[
+        'news.NewsIndexPage'
+    ]        
+    subpage_types = []
     date = models.DateField("Post date")
     news_image = models.ForeignKey(
         'wagtailimages.Image',
