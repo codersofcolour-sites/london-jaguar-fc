@@ -31,7 +31,7 @@
       {% image gallery_img.image original as img_original %}
       <a class="example-image-link" href="{{img_original.url}}" data-lightbox="london-jaguars-set"
         {% if gallery_img.image_caption %} data-title="{{gallery_img.image_caption}}" {% endif %}>
-        <img src="{{img.url}}" alt="{{img.alt}}"/>
+        <img src="{{img.url}}" alt="{{img.alt}"/>
       </a>
     </div>
         {% endfor %}
