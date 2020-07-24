@@ -11,6 +11,13 @@ img{
     width: 100%;
     max-width: 100%;
 }
+img.captcha{
+    width: 200px;
+    border: 2px solid black;
+}
+.help-block{
+    color: red;
+}
 .link:focus {
     outline: 0;
 }

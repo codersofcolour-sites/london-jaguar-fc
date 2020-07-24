@@ -26,6 +26,9 @@ Django==3.0.4
 django-cogwheels==0.3
 django-extensions==2.2.9
 django-modelcluster==5.0.1
+django-ranged-response==0.2.0
+django-recaptcha==2.0.6
+django-simple-captcha==0.5.12
 django-storages==1.9.1
 django-taggit==1.2.0
 django-toolbelt==0.0.1
@@ -82,6 +85,7 @@ Unidecode==1.1.1
 urllib3==1.25.8
 virtualenv==20.0.3
 wagtail==2.9
+wagtail-django-simple-captcha==1.0
 wagtailfontawesome==1.2.1
 wagtailmenus==3.0.2
 watchdog==0.10.2

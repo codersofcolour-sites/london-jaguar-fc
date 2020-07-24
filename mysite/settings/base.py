@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'dashboard',
     'site_settings',
     'widget_tweaks',
+    'wagtailcaptcha',
+    'captcha',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

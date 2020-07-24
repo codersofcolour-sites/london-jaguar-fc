@@ -60,15 +60,25 @@
                 <form action="{% pageurl page %}" method="POST" class="mx-5 f4">
                     {% csrf_token %}
                     {% for field in form.visible_fields %}
-                      <div class="form-group">
-                        <label for="{{ field.id_for_label }}">{{field.label_tag}}</label>
-                        {% render_field field class+="form-control form-control-lg" placeholder=field.help_text id=field.id_for_label %}
-                        {% for error in field.errors %}
+                      {% if field.id_for_label == 'id_wagtailcaptcha_1' %}
+                        <div class="form-group" >
+                          <label for="{{ field.id_for_label }}">Type the characters below:</label>
+                          <br/>
+                          {% render_field field class+="form-control form-control-lg col-6" placeholder='Enter characters' id=field.id_for_label %}
+                          {% for error in field.errors %}
+                            <span class="help-block">{{ error }}</span>
+                          {% endfor %}
+                        </div>
+                      {% else %}
+                        <div class="form-group">
+                          <label for="{{ field.id_for_label }}">{{field.label_tag}}</label>
+                          {% render_field field class+="form-control form-control-lg" placeholder=field.help_text id=field.id_for_label %}
+                          {% for error in field.errors %}
                           <span class="help-block">{{ error }}</span>
-                        {% endfor %}
-                      </div>
+                          {% endfor %}
+                        </div>
+                      {% endif %}
                     {% endfor %}
-
                     <button type="submit" class="btn-l btn btn-block btn-lg btn-main f5 black px-5 py-4">
                       Submit
                     </button>

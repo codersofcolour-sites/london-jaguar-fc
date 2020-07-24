@@ -1,5 +1,6 @@
 from django.db import models
 from modelcluster.fields import ParentalKey
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     FieldRowPanel,
@@ -15,7 +16,7 @@ from wagtail.contrib.forms.models import (
 class FormField(AbstractFormField):
     page = ParentalKey('ContactPage', related_name='form_fields')
 
-class ContactPage(AbstractEmailForm):
+class ContactPage(WagtailCaptchaEmailForm):
     subpage_types = []
     max_count = 1 
     # This is the default path.
@@ -29,7 +30,7 @@ class ContactPage(AbstractEmailForm):
     contact_number = models.CharField(max_length=90, blank=True)
     contact_email = models.CharField(max_length=150, blank=True)
 
-    content_panels = AbstractEmailForm.content_panels + [
+    content_panels = WagtailCaptchaEmailForm.content_panels + [
         MultiFieldPanel([
             FieldPanel("address"),
             FieldPanel("contact_number"),
