@@ -84,7 +84,7 @@ tzlocal==1.5.1
 Unidecode==1.1.1
 urllib3==1.25.8
 virtualenv==20.0.3
-wagtail==2.9
+wagtail==2.9.3
 wagtail-django-simple-captcha==1.0
 wagtailfontawesome==1.2.1
 wagtailmenus==3.0.2
