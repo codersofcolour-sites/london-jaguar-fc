@@ -46,7 +46,7 @@ class GalleryPage(Page):
         context = super(GalleryPage, self).get_context(request, *args, **kwargs)
         live_newspages = self.gallery_images.all()
         all_pics = live_newspages
-        paginator = Paginator(all_pics, 25)
+        paginator = Paginator(all_pics, 40)
         page = request.GET.get("page")
         
         try:
